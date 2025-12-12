@@ -292,25 +292,19 @@ export default function EnrollmentSystem() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Class *
-                </label>
-                <select
-                  value={formData.className}
-                  onChange={(e) => setFormData({...formData, className: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                >
-                  <option value="">Select Class</option>
-                  <option value="10A">10A</option>
-                  <option value="10B">10B</option>
-                  <option value="11A">11A</option>
-                  <option value="11B">11B</option>
-                  <option value="12A">12A</option>
-                  <option value="12B">12B</option>
-                </select>
-              </div>
+  <div>
+  <label className="block text-sm font-medium text-gray-700 mb-1">
+  SCHOOL BUS 
+  </label>
+  <input
+    type="text"
+    value={formData.className}
+    onChange={(e) => setFormData({...formData, className: e.target.value.toUpperCase()})}
+    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    placeholder="Enter Bus Number.."
+    required
+  />
+</div>
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">

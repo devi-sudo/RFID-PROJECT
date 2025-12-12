@@ -143,14 +143,11 @@ export default function RealTimeMonitor() {
         
         <div className="p-8 text-center relative z-10">
           <div className="text-6xl mb-4">📱</div>
-          <h3 className="text-2xl font-bold text-white mb-2">RFID Scanner Active</h3>
-          <p className="text-blue-100">
-            Place RFID card near the scanner to register attendance
-          </p>
+   
           
           <div className="mt-6 inline-flex items-center px-4 py-2 bg-white bg-opacity-20 rounded-full">
             <FiClock className="text-white mr-2" />
-            <span className="text-white font-medium">
+            <span className="text-black font-bold">
               Last scan: {scans.length > 0 ? formatTime(scans[0].timestamp) : 'No scans yet'}
             </span>
           </div>

@@ -67,14 +67,14 @@ export default function Login({ onLogin }) {
                 </label>
                 <div className="relative">
                   <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  {/* <input
+                  <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="John Doe"
-                  /> */}
+                  />
                 </div>
               </div>
             )}
@@ -137,7 +137,7 @@ export default function Login({ onLogin }) {
               }}
               className="text-blue-500 hover:text-blue-600 font-medium"
             >
-              {isLogin ? "" : 'Already have an account? Sign in'}
+              {isLogin ? "CLID" : 'Already have an account? Sign in'}
             </button>
           </div>
         </div>

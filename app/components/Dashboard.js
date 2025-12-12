@@ -11,15 +11,11 @@ import DeviceStatus from './DeviceStatus';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
-export default function Dashboard({ user, setUser }) {
+export default function Dashboard({ user, setUser, activeTab, autoRefresh, lastUpdateTime, onManualRefresh }) {
   const [loading, setLoading] = useState(false);
   const [stats, setStats] = useState(null);
 
-  useEffect(() => {
-    if (user.activeTab === 'dashboard') {
-      fetchDashboardStats();
-    }
-  }, [user.activeTab]);
+  const effectiveTab = activeTab || user?.activeTab;
 
   const fetchDashboardStats = async () => {
     try {
@@ -37,12 +33,18 @@ export default function Dashboard({ user, setUser }) {
     }
   };
 
-  const getToken = () => {
-    return localStorage.getItem('token');
-  };
+  useEffect(() => {
+    if (effectiveTab === 'dashboard') {
+      (async () => {
+        await fetchDashboardStats();
+      })();
+    }
+  }, [effectiveTab]);
+
+
 
   const renderContent = () => {
-    switch (user.activeTab) {
+    switch (effectiveTab) {
       case 'dashboard':
         return <DashboardHome stats={stats} />;
       case 'students':
@@ -67,15 +69,15 @@ export default function Dashboard({ user, setUser }) {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h1 className="text-2xl font-bold text-gray-800 capitalize">
-              {user.activeTab === 'dashboard' ? 'Dashboard' : user.activeTab}
+              {effectiveTab === 'dashboard' ? 'Dashboard' : effectiveTab}
             </h1>
             <p className="text-gray-600 mt-1">
-              {user.activeTab === 'dashboard' && 'Overview of attendance system'}
-              {user.activeTab === 'students' && 'Manage student information and RFID cards'}
-              {user.activeTab === 'attendance' && 'View and manage attendance records'}
-              {user.activeTab === 'reports' && 'Generate attendance reports and analytics'}
-              {user.activeTab === 'realtime' && 'Live RFID scan monitoring'}
-              {user.activeTab === 'devices' && 'Monitor RFID scanner devices'}
+              {effectiveTab === 'dashboard' && 'Overview of attendance system'}
+              {effectiveTab === 'students' && 'Manage student information and RFID cards'}
+              {effectiveTab === 'attendance' && 'View and manage attendance records'}
+              {effectiveTab === 'reports' && 'Generate attendance reports and analytics'}
+              {effectiveTab === 'realtime' && 'Live RFID scan monitoring'}
+              {effectiveTab === 'devices' && 'Monitor RFID scanner devices'}
             </p>
           </div>
           
@@ -88,6 +90,21 @@ export default function Dashboard({ user, setUser }) {
                 day: 'numeric' 
               })}
             </div>
+            {typeof autoRefresh !== 'undefined' && (
+              <div className="text-sm text-gray-500">
+                Auto-refresh: <span className={`font-medium ${autoRefresh ? 'text-green-600' : 'text-gray-600'}`}>{autoRefresh ? 'ON' : 'OFF'}</span>
+              </div>
+            )}
+            {lastUpdateTime && (
+              <div className="text-sm text-gray-500">
+                Last update: {new Date(lastUpdateTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+              </div>
+            )}
+            {onManualRefresh && (
+              <button onClick={onManualRefresh} className="px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors text-sm">
+                Refresh
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -30,6 +30,45 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState('dashboard'); // Separate state for active tab
   const router = useRouter();
 
+  const isAutoRefresh = true;
+  const [lastUpdateTime, setLastUpdateTime] = useState(new Date());
+
+  useEffect(() => {
+    /** @type {ReturnType<typeof setInterval> | null} */
+    let intervalId = null;
+
+    const doFetch = async () => {
+      if (!user || activeTab !== 'dashboard') return;
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${API_URL}/api/dashboard/stats`, {
+          headers: { 'Authorization': `Bearer ${token}` },
+          cache: 'no-store'
+        });
+        if (response && response.ok) setLastUpdateTime(new Date());
+      } catch (err) {
+        console.error('Dashboard fetch failed:', err);
+      }
+    };
+
+    if (isAutoRefresh && user && activeTab === 'dashboard') {
+      // Fetch data immediately
+      doFetch();
+
+      // Start interval
+      intervalId = setInterval(() => {
+        doFetch();
+      }, 5000);
+    }
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [isAutoRefresh, user, activeTab]);
+
+  
   // Initialize user with default active tab as dashboard
   useEffect(() => {
     if (user && !user.activeTab) {
@@ -357,7 +396,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="text-sm text-gray-500">
-                  Last updated: {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  Last updated: {lastUpdateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </div>
               </div>
             </div>

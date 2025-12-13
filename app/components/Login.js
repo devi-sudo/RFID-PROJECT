@@ -137,7 +137,7 @@ export default function Login({ onLogin }) {
               }}
               className="text-blue-500 hover:text-blue-600 font-medium"
             >
-              {isLogin ? "CLID" : 'Already have an account? Sign in'}
+              {isLogin ? "" : 'Already have an account? Sign in'}
             </button>
           </div>
         </div>
@@ -150,4 +150,5 @@ export default function Login({ onLogin }) {
       </div>
     </div>
   );
+
 }

@@ -76,7 +76,7 @@ export default function DashboardHome({ stats }) {
           <div className="mt-4">
             <div className="flex items-center text-sm text-gray-600">
               <span className="text-green-500 mr-1">•</span>
-              {stats.classes?.length || 0} Active Classes
+              {stats.classes?.length || 0} Active Buses
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function DashboardHome({ stats }) {
               <FiBook className="w-6 h-6 text-purple-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">Total Classes</p>
+              <p className="text-sm text-gray-500">Total Buses</p>
               <p className="text-2xl font-bold text-gray-900">{stats.totalClasses}</p>
             </div>
           </div>

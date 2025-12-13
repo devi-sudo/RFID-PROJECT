@@ -129,7 +129,7 @@ export default function Login({ onLogin }) {
             </button>
           </form>
 
-          <div className="mt-2 text-center">
+          <div className="mt-6 text-center">
             <button
               onClick={() => {
                 setIsLogin(!isLogin);
@@ -137,7 +137,7 @@ export default function Login({ onLogin }) {
               }}
               className="text-blue-500 hover:text-blue-600 font-medium"
             >
-              {isLogin ? "" : 'Already have an account? Sign in'}
+              {isLogin ? "CLID" : 'Already have an account? Sign in'}
             </button>
           </div>
         </div>
@@ -150,5 +150,4 @@ export default function Login({ onLogin }) {
       </div>
     </div>
   );
-
 }

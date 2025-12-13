@@ -203,7 +203,7 @@
 //               onChange={(e) => setFilters({...filters, className: e.target.value})}
 //               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
 //             >
-//               <option value="">All Classes</option>
+//               <option value="">All Buses</option>
 //               <option value="10A">10A</option>
 //               <option value="10B">10B</option>
 //               <option value="11A">11A</option>
@@ -513,24 +513,18 @@ export default function AttendanceLog() {
             />
           </div>
           
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Class
-            </label>
-            <select
-              value={filters.className}
-              onChange={(e) => setFilters({...filters, className: e.target.value})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">All Classes</option>
-              <option value="10A">10A</option>
-              <option value="10B">10B</option>
-              <option value="11A">11A</option>
-              <option value="11B">11B</option>
-              <option value="12A">12A</option>
-              <option value="12B">12B</option>
-            </select>
-          </div>
+        <div>
+  <label className="block text-sm font-medium text-gray-700 mb-1">
+   All Buses
+  </label>
+  <input
+    type="text"
+    value={filters.className}
+    onChange={(e) => setFilters({...filters, className: e.target.value})}
+    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    placeholder="Enter bus number (e.g., 10A)"
+  />
+</div>
           
           <div className="flex items-end">
             <button

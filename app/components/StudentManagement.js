@@ -743,7 +743,7 @@ export default function StudentManagement() {
                   <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Card ID</span>
                 </th>
                 <th className="py-4 px-6 text-left">
-                  <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Class & Roll</span>
+                  <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Buses & Roll</span>
                 </th>
                 <th className="py-4 px-6 text-left">
                   <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</span>

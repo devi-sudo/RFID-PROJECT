@@ -76,5 +76,5 @@ npm run dev
 ```
 ## 🚀 Live Preview
 
-👉 [View Live Application](https://rfid-project-3fvglzskm-devi-sudos-projects.vercel.app/)
+👉 [View Live Application](https://rfid-project-iot.vercel.app/)
 

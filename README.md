@@ -35,7 +35,7 @@ It provides:
 
 ---
 
-## 🧠 What This Project Demonstrates (For Recruiters)
+## 🧠 What This Project Demonstrates 
 
 - Full-stack web development
 - Real-time system design

@@ -50,11 +50,11 @@ It provides:
 
 Frontend:
 - Next.js
-- React
-- JavaScript
+- TailwindCss
 
 Backend / Logic:
 - Node.js
+- Firebase
 
 Deployment:
 - Render
@@ -69,5 +69,12 @@ Version Control:
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/devi-sudo/RFID-PROJECT
+cd RFID-PROJECT
+npm install
+npm run dev
+```
+## 🚀 Live Preview
+
+👉 [View Live Application](https://rfid-project-3fvglzskm-devi-sudos-projects.vercel.app/)
+
